@@ -4,5 +4,66 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d"
-      Title="PageHttpUpload" Width="723.659" Height="194.634">
+      Title="PageHttpUpload" Width="725" Height="192">
+    <Grid>
+        <Label Content="目标地址：" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="27" Margin="80,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="635" VerticalContentAlignment="Center">
+            <TextBox.Resources>
+                <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left">
+                    <VisualBrush.Visual>
+                        <TextBlock FontStyle="Italic" Text="输入一个网址，将文件上传到这个地址"/>
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </TextBox.Resources>
+            <TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                        </Trigger>
+                        <Trigger Property="Text" Value="">
+                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+
+        <Label Content="上传文件：" HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top" Width="65"/>
+        <TextBox HorizontalAlignment="Left" Height="27" Margin="80,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="562" VerticalContentAlignment="Center">
+            <TextBox.Resources>
+                <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left">
+                    <VisualBrush.Visual>
+                        <TextBlock FontStyle="Italic" Text="打开一个文件，或者输入一个有效的文件名"/>
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </TextBox.Resources>
+            <TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                        </Trigger>
+                        <Trigger Property="Text" Value="">
+                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+            <Button Content="浏览" HorizontalAlignment="Left" Margin="647,71,0,0" VerticalAlignment="Top" Width="68" Height="26"/>
+
+        <GroupBox Header="选项" HorizontalAlignment="Left" Height="69" Margin="10,113,0,0" VerticalAlignment="Top" Width="632">
+            <StackPanel Orientation="Horizontal">
+                <ComboBox HorizontalAlignment="Left" Width="71" Height="26">
+                    <ComboBoxItem IsSelected="True" Content="POST"/>
+                    <ComboBoxItem Content="PUT"/>
+                </ComboBox>
+
+                <CheckBox Content="断点续传" Margin="10,0,0,0" VerticalAlignment="Center" Height="26" VerticalContentAlignment="Center"/>
+                <ProgressBar Height="26" Margin="20,0,0,0" VerticalAlignment="Center" Width="430"/>
+            </StackPanel>
+        </GroupBox>
+        <Button Content="开始" HorizontalAlignment="Left" Margin="647,138,0,0" VerticalAlignment="Top" Width="68" Height="26"/>
+    </Grid>
 </Page>

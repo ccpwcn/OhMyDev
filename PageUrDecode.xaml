@@ -8,11 +8,51 @@
       Title="UrlDecode" Drop="Page_Drop">
     <Grid Drop="Page_Drop">
         <Label Content="打开文件：" IsTabStop="True" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox Name="Filename" TabIndex="0" HorizontalAlignment="Left" Height="23" Margin="85,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="551" VerticalContentAlignment="Center"/>
+        <TextBox Name="Filename" TabIndex="0" HorizontalAlignment="Left" Height="23" Margin="85,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="551" VerticalContentAlignment="Center">
+            <TextBox.Resources>
+                <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left">
+                    <VisualBrush.Visual>
+                        <TextBlock FontStyle="Italic" Text="打开一个文件，或者输入一个有效的文件名"/>
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </TextBox.Resources>
+            <TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                        </Trigger>
+                        <Trigger Property="Text" Value="">
+                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
         <Button Name="OpenFileBtn" TabIndex="1" Content="浏览" HorizontalAlignment="Left" Margin="641,32,0,0" VerticalAlignment="Top" Width="72" Height="24" Click="OpenFileBtn_Click"/>
 
         <Label Content="保存文件：" IsTabStop="True" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox x:Name="DestFilename" TabIndex="2" HorizontalAlignment="Left" Height="23" Margin="85,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="551" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="DestFilename" TabIndex="2" HorizontalAlignment="Left" Height="23" Margin="85,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="551" VerticalContentAlignment="Center">
+            <TextBox.Resources>
+                <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left">
+                    <VisualBrush.Visual>
+                        <TextBlock FontStyle="Italic" Text="指定一个文件，或者输入一个有效的文件名，文件如果已经存在，将会被覆盖"/>
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </TextBox.Resources>
+            <TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                        </Trigger>
+                        <Trigger Property="Text" Value="">
+                            <Setter Property="Background" Value="{StaticResource HintText}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
         <Button x:Name="SaveFileBtn" TabIndex="3" Content="选择" HorizontalAlignment="Left" Margin="641,83,0,0" VerticalAlignment="Top" Width="72" Height="24" Click="SaveFileBtn_Click"/>
 
         <ComboBox Name="FileEncoding" TabIndex="4" HorizontalAlignment="Left" Margin="10,131,0,0" VerticalAlignment="Top" Width="120">
