@@ -66,12 +66,27 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="commons\DateUtils.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PageHttpUpload.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageUrDecode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PageHttpUpload.xaml.cs">
+      <DependentUpon>PageHttpUpload.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageUrDecode.xaml.cs">
+      <DependentUpon>PageUrDecode.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -101,6 +116,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\url.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
