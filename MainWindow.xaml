@@ -8,7 +8,7 @@
         Title="大文件UrlDecode工具" Height="222.53" Width="736.401" ResizeMode="CanMinimize" Closing="Window_Closing" WindowStartupLocation="CenterScreen" AllowDrop="True" Drop="Window_Drop">
     <Grid>
         <Label Content="打开文件：" HorizontalAlignment="Left" Margin="10,43,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox Name="Filename" HorizontalAlignment="Left" Height="23" Margin="104,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="532" VerticalContentAlignment="Center"/>
+        <TextBox Name="Filename" HorizontalAlignment="Left" Height="23" Margin="85,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="551" VerticalContentAlignment="Center"/>
         <Button Name="OpenFileBtn" Content="浏览" HorizontalAlignment="Left" Margin="641,42,0,0" VerticalAlignment="Top" Width="72" Height="24" Click="OpenFileBtn_Click"/>
         <ProgressBar Name="ProgressBar" HorizontalAlignment="Left" Height="19" Margin="10,157,0,0" VerticalAlignment="Top" Width="703"/>
         <Button Name="StartBtn" Content="开始" HorizontalAlignment="Left" Margin="643,129,0,0" VerticalAlignment="Top" Width="70" Click="Button_Click" Height="23"/>
@@ -19,7 +19,7 @@
             <ComboBoxItem Content="Unicode" HorizontalAlignment="Left" Width="118"/>
         </ComboBox>
         <Label Content="保存文件：" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox x:Name="DestFilename" HorizontalAlignment="Left" Height="23" Margin="104,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="532" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="DestFilename" HorizontalAlignment="Left" Height="23" Margin="85,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="551" VerticalContentAlignment="Center"/>
         <Button x:Name="SaveFileBtn" Content="选择" HorizontalAlignment="Left" Margin="641,89,0,0" VerticalAlignment="Top" Width="72" Height="24" Click="SaveFileBtn_Click"/>
 
     </Grid>
