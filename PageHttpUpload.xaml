@@ -51,13 +51,13 @@
                 </Style>
             </TextBox.Style>
         </TextBox>
-            <Button Content="浏览" HorizontalAlignment="Left" Margin="647,71,0,0" VerticalAlignment="Top" Width="68" Height="26"/>
+            <Button Content="浏览" HorizontalAlignment="Left" Margin="647,71,0,0" VerticalAlignment="Top" Width="68" Height="26" Click="Button_Click"/>
 
         <GroupBox Header="选项" HorizontalAlignment="Left" Height="69" Margin="10,113,0,0" VerticalAlignment="Top" Width="632">
             <StackPanel Orientation="Horizontal">
-                <ComboBox HorizontalAlignment="Left" Width="71" Height="26">
-                    <ComboBoxItem IsSelected="True" Content="POST"/>
-                    <ComboBoxItem Content="PUT"/>
+                <ComboBox HorizontalAlignment="Left" Width="71" Height="26" VerticalContentAlignment="Center">
+                    <ComboBoxItem IsSelected="True" Content="POST" VerticalContentAlignment="Center"/>
+                    <ComboBoxItem Content="PUT" VerticalContentAlignment="Center"/>
                 </ComboBox>
 
                 <CheckBox Content="断点续传" Margin="15,0,0,0" VerticalAlignment="Center" Height="26" VerticalContentAlignment="Center"/>
@@ -69,6 +69,6 @@
                 <ProgressBar Height="26" Margin="20,0,0,0" VerticalAlignment="Center" Width="330"/>
             </StackPanel>
         </GroupBox>
-        <Button Content="开始" HorizontalAlignment="Left" Margin="647,138,0,0" VerticalAlignment="Top" Width="68" Height="26"/>
+        <Button Content="开始" HorizontalAlignment="Left" Margin="647,138,0,0" VerticalAlignment="Top" Width="68" Height="26" Click="Button_Click_1"/>
     </Grid>
 </Page>
