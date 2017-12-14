@@ -6,8 +6,8 @@
       mc:Ignorable="d"
       Title="PageHttpUpload" Width="725" Height="192">
     <Grid>
-        <Label Content="目标地址：" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="27" Margin="80,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="635" VerticalContentAlignment="Center">
+        <Label Content="目标地址：" HorizontalAlignment="Left" Margin="10,21,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="RemoteUrl" HorizontalAlignment="Left" Height="27" Margin="80,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="635" VerticalContentAlignment="Center">
             <TextBox.Resources>
                 <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left">
                     <VisualBrush.Visual>
@@ -29,8 +29,8 @@
             </TextBox.Style>
         </TextBox>
 
-        <Label Content="上传文件：" HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top" Width="65"/>
-        <TextBox HorizontalAlignment="Left" Height="27" Margin="80,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="562" VerticalContentAlignment="Center">
+        <Label Content="上传文件：" HorizontalAlignment="Left" Margin="10,57,0,0" VerticalAlignment="Top" Width="65"/>
+        <TextBox Name="LocalFilename" HorizontalAlignment="Left" Height="27" Margin="80,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="562" VerticalContentAlignment="Center">
             <TextBox.Resources>
                 <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left">
                     <VisualBrush.Visual>
@@ -51,24 +51,26 @@
                 </Style>
             </TextBox.Style>
         </TextBox>
-            <Button Content="浏览" HorizontalAlignment="Left" Margin="647,71,0,0" VerticalAlignment="Top" Width="68" Height="26" Click="Button_Click"/>
+        <Button Content="浏览" Name="OpenFileBtn" HorizontalAlignment="Left" Margin="647,57,0,0" VerticalAlignment="Top" Width="68" Height="26" Click="OpenFileBtn_Click"/>
+
+        <Label Name="StatusText" IsTabStop="True" Content="" Margin="10,88,83,0" VerticalAlignment="Top"/>
 
         <GroupBox Header="选项" HorizontalAlignment="Left" Height="69" Margin="10,113,0,0" VerticalAlignment="Top" Width="632">
             <StackPanel Orientation="Horizontal">
-                <ComboBox HorizontalAlignment="Left" Width="71" Height="26" VerticalContentAlignment="Center">
+                <ComboBox Name="RequestMethodOptions" HorizontalAlignment="Left" Width="71" Height="26" VerticalContentAlignment="Center">
                     <ComboBoxItem IsSelected="True" Content="POST" VerticalContentAlignment="Center"/>
                     <ComboBoxItem Content="PUT" VerticalContentAlignment="Center"/>
                 </ComboBox>
 
-                <CheckBox Content="断点续传" Margin="15,0,0,0" VerticalAlignment="Center" Height="26" VerticalContentAlignment="Center"/>
-                
+                <CheckBox Name="ResumeUpload" Content="断点续传" Margin="15,0,0,0" VerticalAlignment="Center" Height="26" VerticalContentAlignment="Center"/>
+
                 <Label Content="块大小(MB)" Height="26" VerticalAlignment="Center"  Margin="10,0,0,0"/>
-                <TextBox Text="2" Width="20" Height="26" VerticalAlignment="Center" VerticalContentAlignment="Center">
+                <TextBox Name="BlockSize" Text="2" Width="20" Height="26" VerticalAlignment="Center" VerticalContentAlignment="Center">
                 </TextBox>
 
-                <ProgressBar Height="26" Margin="20,0,0,0" VerticalAlignment="Center" Width="330"/>
+                <ProgressBar Name="ProgressBar" Height="26" Margin="20,10,0,11" VerticalAlignment="Center" Width="330"/>
             </StackPanel>
         </GroupBox>
-        <Button Content="开始" HorizontalAlignment="Left" Margin="647,138,0,0" VerticalAlignment="Top" Width="68" Height="26" Click="Button_Click_1"/>
+        <Button Name="StartBtn" Content="开始" HorizontalAlignment="Left" Margin="647,138,0,0" VerticalAlignment="Top" Width="68" Height="26" Click="StartBtn_Click"/>
     </Grid>
 </Page>
