@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -37,20 +38,29 @@ namespace OhMyDev
             }
         }
 
+        private Regex reg =new Regex( @"^https?://\w+\.\w+\.\S+");
         private Boolean busy;
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
             if (RemoteUrl.Text == "")
             {
+                StatusText.Foreground = Brushes.Red;
                 StatusText.Content = "必须输入一个有效的URL才能开始任务";
             }
             else if (LocalFilename.Text == "")
             {
+                StatusText.Foreground = Brushes.Red;
                 StatusText.Content = "必须指定一个有效的本地文件才能开始任务";
             }
             else if (busy)
             {
+                StatusText.Foreground = Brushes.Red;
                 StatusText.Content = "前一个任务还没有完成，请等待";
+            }
+            else if (!reg.IsMatch(RemoteUrl.Text))
+            {
+                StatusText.Foreground = Brushes.Red;
+                StatusText.Content = "上传文件的目标地址不是一个有效的URL";
             }
             else
             {
@@ -61,8 +71,10 @@ namespace OhMyDev
         private void Process(string filename, string remoteUrl)
         {
             busy = true;
+            StatusText.Foreground = Brushes.Blue;
             StatusText.Content = "开始上传";
 
+            StatusText.Foreground = Brushes.Green;
             StatusText.Content = "成功完成";
             busy = false;
         }
