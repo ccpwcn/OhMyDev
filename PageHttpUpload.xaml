@@ -65,7 +65,7 @@
                 <CheckBox Name="ResumeUpload" Content="断点续传" Margin="15,0,0,0" VerticalAlignment="Center" Height="26" VerticalContentAlignment="Center"/>
 
                 <Label Content="块大小(MB)" Height="26" VerticalAlignment="Center"  Margin="10,0,0,0"/>
-                <TextBox Name="BlockSize" Text="2" Width="20" Height="26" VerticalAlignment="Center" VerticalContentAlignment="Center">
+                <TextBox Name="BlockSize" Text="2" Width="20" Height="26" VerticalAlignment="Center" VerticalContentAlignment="Center" PreviewTextInput="BlockSize_PreviewTextInput">
                 </TextBox>
 
                 <ProgressBar Name="ProgressBar" Height="26" Margin="20,10,0,11" VerticalAlignment="Center" Width="330"/>
