@@ -18,13 +18,12 @@
 # 下一个大版本计划
 四大功能：
 - Url解码
-- HTTP上传
-- HTTP下载
-- JSON比较
+- JSON字符串比较
+- JSON文件比较
 
 demo图：
 
-![roadmap](images/3.jpg)
+![roadmap](images/4.jpg)
 
 # 技术贴
 这个工程写的时候用的是WPF的技术，所以运行期间你会听见电脑风扇的声音，但那不是你的CPU在忙碌，而是使用的GPU加速功能，所以不会对你的电脑造成卡顿的。

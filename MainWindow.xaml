@@ -19,7 +19,15 @@
                 <TabItem>
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="JSON比较" Foreground="Orange" />
+                            <TextBlock Text="JSON字符串比较" Foreground="Orange" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Label Content="建设中。。。" Foreground="Gray"></Label>
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="JSON文件比较" Foreground="Brown" />
                         </StackPanel>
                     </TabItem.Header>
                     <Label Content="建设中。。。" Foreground="Gray"></Label>
