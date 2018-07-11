@@ -19,22 +19,6 @@
                 <TabItem>
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Http上传" Foreground="Red" />
-                        </StackPanel>
-                    </TabItem.Header>
-                    <Frame Source="PageHttpUpload.xaml"/>
-                </TabItem>
-                <TabItem>
-                    <TabItem.Header>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Http下载" Foreground="Green" />
-                        </StackPanel>
-                    </TabItem.Header>
-                    <Label Content="建设中。。。" Foreground="Gray"></Label>
-                </TabItem>
-                <TabItem>
-                    <TabItem.Header>
-                        <StackPanel Orientation="Horizontal">
                             <TextBlock Text="JSON比较" Foreground="Orange" />
                         </StackPanel>
                     </TabItem.Header>

@@ -27,6 +27,8 @@ namespace OhMyDev
         public PageHttpUpload()
         {
             InitializeComponent();
+            RemoteUrl.Text = @"http://127.0.0.1:8080/MobileFileServer/uploadFile.do";
+            LocalFilename.Text = @"D:\Documents\sms-src.txt";
         }
 
         private void OpenFileBtn_Click(object sender, RoutedEventArgs e)
@@ -40,7 +42,7 @@ namespace OhMyDev
             }
         }
 
-        private Regex reg =new Regex( @"^https?://\w+\.\w+\.\S+");
+        private Regex reg =new Regex(@"^https?://\w+\.\w+\.\S+");
         private Boolean busy;
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -71,38 +73,78 @@ namespace OhMyDev
             }
             else
             {
-                Process(LocalFilename.Text, RemoteUrl.Text);
+                Process(LocalFilename.Text.Trim('"'), RemoteUrl.Text, Convert.ToInt32(BlockSize.Text) * 1024 * 1024);
             }
         }
 
-        private void Process(string filename, string remoteUrl)
+        private void Process(string fullFilename, string remoteUrl, int blockSize)
         {
             busy = true;
             StatusText.Foreground = Brushes.Blue;
             StatusText.Content = "开始上传";
 
-            #region 上传文件开始
-            byte[] fileContentByte = new byte[1024];
-
+            #region 上传文件
+            string filename = System.IO.Path.GetFileName(fullFilename);
+            long totalSize = new FileInfo(fullFilename).Length;
             string modelId = "925C4226-5D67-44D6-A6C9-FFD842FF9A58";
             string boundary = "lhjh";
             string modelIdStr = string.Format("--%s\r\n" +
                 "Content-Disposition: form-data; name=\"modelId\"\r\n\r\n" +
-                "%s\r\n", 
-                boundary, 
+                "%s\r\n",
+                boundary,
                 modelId);
-            string fileContentStr = string.Format("\r\n--%s\r\n" +
+            string transferFileContentInfo = string.Format("\r\n--%s\r\n" +
                 "Content-Type:application/octet-stream\r\n" +
                 "Content-Disposition: form-data; name=\"fileContent\"; filename=\"%s\"\r\n\r\n",
                     boundary, filename);
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(remoteUrl);
-            request.Method = "POST";
-            request.ContentType = "multipart/form-data;boundary=925C4226-5D67-44D6-A6C9-FFD842FF9A58" + seperator;
-            Stream myRequestStream = request.GetRequestStream();
+            //modelId所有字符串二进制
+            var modelIdStrByte = Encoding.UTF8.GetBytes(modelIdStr);
+            //fileContent一些名称等信息的二进制（不包含文件本身）
+            var transferFileContentInfoByte = Encoding.UTF8.GetBytes(transferFileContentInfo);
+
+            byte[] fileContentByte = new byte[blockSize];
+            FileStream fs = new FileStream(fullFilename, FileMode.Open, FileAccess.Read);
+            long fininshedBytes = 0;
+            do
+            {
+                int bytesCount = fs.Read(fileContentByte, 0, blockSize);
+                fininshedBytes += bytesCount;
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(remoteUrl);
+                request.ContentType = "multipart/form-data;charset=utf-8;boundary=" + boundary;
+                request.Method = "POST";
+
+                Stream myRequestStream = request.GetRequestStream();
+
+                myRequestStream.Write(modelIdStrByte, 0, modelIdStrByte.Length);
+                myRequestStream.Write(transferFileContentInfoByte, 0, transferFileContentInfoByte.Length);
+                myRequestStream.Write(fileContentByte, 0, bytesCount);
+
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();//发送
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    Stream myResponseStream = response.GetResponseStream();//获取返回值
+                    StreamReader myStreamReader = new StreamReader(myResponseStream, Encoding.GetEncoding("utf-8"));
+
+                    string retString = myStreamReader.ReadToEnd();
+                    StatusText.Content = retString;
+                    myResponseStream.Close();
+                    myStreamReader.Close();
+                }
+                else
+                {
+                    StatusText.Content = "请求响应状态码：" + response.StatusCode.ToString();
+                }
+                myRequestStream.Close();
+            } while (fininshedBytes < totalSize);
+            
+            fs.Close();
             #endregion 上传文件完成
 
             StatusText.Foreground = Brushes.Green;
-            StatusText.Content = "成功完成";
+            if (StatusText.Content.ToString() == "")
+            {
+                StatusText.Content = "成功完成";
+            }
             busy = false;
         }
 

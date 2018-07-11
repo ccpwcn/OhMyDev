@@ -58,7 +58,8 @@
         <ComboBox Name="FileEncoding" TabIndex="4" HorizontalAlignment="Left" Margin="10,131,0,0" VerticalAlignment="Top" Width="120">
             <ComboBoxItem Content="UTF-8" IsSelected="True" HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem Content="ASCII" HorizontalAlignment="Left" Width="118"/>
-            <ComboBoxItem Content="Unicode" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="GB2312" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="GBK" HorizontalAlignment="Left" Width="118"/>
         </ComboBox>
         <Button Name="StartBtn" TabIndex="5" Content="开始" HorizontalAlignment="Left" Margin="643,129,0,0" VerticalAlignment="Top" Width="70" Click="Button_Click" Height="23"/>
         <Label Name="StatusText" IsTabStop="True" Content="" HorizontalAlignment="Left" Margin="144,127,0,0" VerticalAlignment="Top" Width="492" HorizontalContentAlignment="Right"/>
